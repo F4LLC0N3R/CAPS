@@ -11,8 +11,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
+import asec.Model;
 
-import asec.Controller;
 public class View {
 
 	private JFrame frame;
@@ -49,35 +49,45 @@ public class View {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
+
 		Panel panel = new Panel();
 		frame.getContentPane().add(panel, BorderLayout.CENTER);
 		panel.setLayout(null);
-		
-		Button capbtn = new Button("Capitalise");
+
+		Button capbtn = new Button("Capitalize");
 		capbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String sentence = input.getText();
-				Controller.capitalize(sentence);
-				output.setText(sentence);//wont work? wont capitalize?
+				String cap = input.getText(); // kan också göra
+												// cap.toUpperCase();
+				Model.setSentence(cap);
+				Controller.capitalize(cap);// är det cap även i controller?
+
+				output.setText(cap);// wont work? wont capitalize?
 			}
 		});
 		capbtn.setBounds(42, 106, 70, 22);
 		panel.add(capbtn);
-		
-		Button decapbtn = new Button("Decapitalise");
+
+		Button decapbtn = new Button("Decapitalize");
+		decapbtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				String decap = input.getText();
+				Controller.decapitalize(decap);
+				output.setText(decap);// wont work? wont capitalize?
+			}
+		});
 		decapbtn.setBounds(42, 134, 70, 22);
 		panel.add(decapbtn);
-		
+
 		input = new JTextField();
 		input.setBounds(42, 43, 200, 50);
 		panel.add(input);
 		input.setColumns(10);
-		
+
 		JLabel lblEnterTextHere = new JLabel("Enter text here:");
 		lblEnterTextHere.setBounds(42, 11, 200, 50);
 		panel.add(lblEnterTextHere);
-		
+
 		output = new JTextField();
 		output.setBounds(42, 176, 200, 50);
 		panel.add(output);

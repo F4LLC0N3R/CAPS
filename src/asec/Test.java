@@ -1,20 +1,31 @@
 package asec;
 
 import java.util.Scanner;
+import asec.Model;
 
-public class Sa {
+public class Test {
 	public static void main(String[] args) {
 
-		String blah;
-		Scanner scan = new Scanner(System.in);
+		Model m = new Model();
+		Controller c = new Controller();
 
-		System.out.println("type");
-		blah = scan.next();
-		for (int i = 0; i < 10; i++) {
-			if (blah.equals("2") || blah.equals("1"))
-				System.out.println("yahy");
-			System.out.println(blah);
-		}
+		m.decapitalize("DF");
+
+		System.out.println(m.getSentence());
+
+		c.capitalize("sdf");
+		System.out.println(m.getSentence());
+
+		// String blah;
+		// Scanner scan = new Scanner(System.in);
+		//
+		// System.out.println("type");
+		// blah = scan.next();
+		// for (int i = 0; i < 10; i++) {
+		// if (blah.equals("2") || blah.equals("1"))
+		// System.out.println("yahy");
+		// System.out.println(blah);
+		// }
 	}
 
 }
